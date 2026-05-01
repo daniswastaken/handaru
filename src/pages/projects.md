@@ -1,0 +1,37 @@
+---
+projects:
+    Minecraft:
+        - name: "Bedrock Perfected"
+          link: "https://www.curseforge.com/minecraft-bedrock/addons/bedrock-perfected"
+          desc: "Vanilla+ addon bringing various improvement to Minecraft."
+          icon: ""
+        - name: "Grafika Shader"
+          link: "https://www.curseforge.com/minecraft-bedrock/texture-packs/grafika-shader"
+          desc: "Lightweight, anime-style, RenderDragon shader."
+          icon: ""
+        - name: "Biomify"
+          link: "https://www.curseforge.com/minecraft-bedrock/addons/biomify"
+          desc: "Give you notification on what biome you are currently in."
+          icon: ""
+        - name: "Custom Title Template"
+          link: "https://www.curseforge.com/minecraft-bedrock/texture-packs/custom-title-template"
+          desc: "Template for the community to make their own Title Pack."
+          icon: ""
+        - name: "Bedrock Tweaks"
+          link: "https://bedrocktweaks.net/"
+          desc: "Community driven project for tweaking Vanilla Minecraft."
+    Homelabs:
+        - name: "Prefect"
+          link: "https://github.com/daniswastaken/prefect"
+          desc: "WebUI access to manage your homelab server."
+          icon: ""
+    Academics:
+        - name: "Infinite Chemistry"
+          link: "https://kimia.fun"
+          desc: "OSS gamified stoichiometry and nomenclature."
+          icon: ""
+        - name: "Inperta"
+          link: ""
+          desc: "Interactive periodic table for memorizing 118 elements."
+          icon: ""
+---
