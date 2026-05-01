@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import BedrockPerfected from "../icons/BedrockPerfected.vue";
+import Grafika from "../icons/Grafika.vue";
+import InfiniteChemistry from "../icons/InfiniteChemistry.vue";
+import Prefect from "../icons/Prefect.vue";
 
 defineProps<{ projects: Record<string, any[]> }>();
 
@@ -89,6 +92,21 @@ function slug(name: string) {
                     <div v-if="item.icon" class="pt-2 pr-5">
                         <BedrockPerfected
                             v-if="item.icon === 'BedrockPerfected'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <Grafika
+                            v-else-if="item.icon === 'Grafika'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <InfiniteChemistry
+                            v-else-if="item.icon === 'InfiniteChemistry'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <Prefect
+                            v-else-if="item.icon === 'Prefect'"
                             style="width: 2.25rem; height: 2.25rem;"
                             class="opacity-50"
                         />
