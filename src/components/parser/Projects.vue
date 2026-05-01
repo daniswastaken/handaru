@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import BedrockPerfected from "../icons/BedrockPerfected.vue";
+
 defineProps<{ projects: Record<string, any[]> }>();
 
 function slug(name: string) {
@@ -7,7 +9,7 @@ function slug(name: string) {
 </script>
 
 <template>
-    <div class="max-w-300 mx-auto">
+    <div class="max-w-250 mx-auto">
         <p text-center mt--6 mb5 op50 text-lg>
             Creator, contributor, or maintainer.
         </p>
@@ -16,33 +18,23 @@ function slug(name: string) {
                 <a
                     href="https://github.com/daniswastaken"
                     target="_blank"
-                    class="group btn-blue inline-block"
+                    class="group btn-blue"
                 >
-                    <div
-                        i-ph-github-logo
-                        group-hover="text-blue"
-                    />
+                    <div i-ph-github-logo group-hover="text-blue" />
                     GitHub
                 </a>
                 <a
                     href="https://www.curseforge.com/members/daniswastaken/projects"
                     target="_blank"
-                    class="group btn-orange inline-block"
+                    class="group btn-orange"
                 >
-                    <div
-                        i-simple-icons-curseforge
-                        group-hover="text-orange"
-                    />
+                    <div i-simple-icons-curseforge group-hover="text-orange" />
                     CurseForge
                 </a>
             </div>
-            <hr class="mt-8 opacity-20" />
+            <hr class="w-50px mx-auto my-8 border-t border-0 border-hex-888 op30" />
         </div>
-        <div
-            v-for="(key) in Object.keys(projects)"
-            :key="key"
-            class="mb-10"
-        >
+        <div v-for="key in Object.keys(projects)" :key="key" class="mb-10">
             <div
                 :id="slug(key)"
                 select-none
@@ -83,8 +75,8 @@ function slug(name: string) {
                 </span>
             </div>
             <div
-                class="project-grid py-2 mb-8 max-w-500 w-max mx-auto"
-                grid="~ cols-1 md:cols-2 gap-4 lg:cols-3"
+                class="project-grid py-2 mb-8 mx-auto w-fit"
+                grid="~ cols-1 md:cols-2 lg:cols-3 gap-x-8 gap-y-4"
             >
                 <a
                     v-for="(item, idx) in projects[key]"
@@ -94,6 +86,18 @@ function slug(name: string) {
                     target="_blank"
                     :title="item.name"
                 >
+                    <div v-if="item.icon" class="pt-2 pr-5">
+                        <BedrockPerfected
+                            v-if="item.icon === 'BedrockPerfected'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <div
+                            v-else
+                            class="text-3xl opacity-50"
+                            :class="item.icon || 'i-ph-cube-duotone'"
+                        />
+                    </div>
                     <div class="flex-auto">
                         <div class="text-normal">{{ item.name }}</div>
                         <div
@@ -115,13 +119,13 @@ function slug(name: string) {
     max-width: 100%;
     padding: 0.5rem 0.875rem 0.875rem;
     border-radius: 3px;
-    color: #8A8B8C;
+    color: #8a8b8c;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .project-grid a.item .desc {
-    color: #3D3E3F;
+    color: #3d3e3f;
 }
 
 .project-grid a.item:hover {
@@ -130,6 +134,6 @@ function slug(name: string) {
 }
 
 .project-grid a.item:hover .desc {
-    color: #8A8B8C;
+    color: #8a8b8c;
 }
 </style>
