@@ -21,6 +21,10 @@ projects:
           link: "https://bedrocktweaks.net/"
           desc: "Community driven project for tweaking Vanilla Minecraft."
           icon: "BedrockPerfected"
+        - name: "Icona"
+          link: "https://github.com/daniswastaken/icona"
+          desc: "Open-source icons for writing good Minecraft Marketplace Description."
+          icon: "BedrockPerfected"
     Homelabs:
         - name: "Prefect"
           link: "https://github.com/daniswastaken/prefect"
