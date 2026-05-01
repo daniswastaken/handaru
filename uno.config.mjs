@@ -1,21 +1,24 @@
-// x:/handaru/uno.config.mjs
 import {
   defineConfig,
-  presetWind3,
+  presetUno,
   presetIcons,
   presetAttributify,
-  presetWebFonts
+  presetWind3,
+  presetWebFonts,
 } from 'unocss';
 
 export default defineConfig({
-    shortcuts: [
+  shortcuts: [
     {
-      'btn-blue': 'flex items-center gap-2 px-3 py-1 rounded border border-blue/20 bg-blue/5 hover:bg-blue/10 transition-colors',
-      'btn-lime': 'flex items-center gap-2 px-3 py-1 rounded border border-lime/20 bg-lime/5 hover:bg-lime/10 transition-colors',
-    }
+      'bg-base': 'bg-white dark:bg-black',
+      'color-base': 'text-black dark:text-white',
+      'border-base': 'border-[#8884]',
+    },
+    [/^btn-(\w+)$/, ([_, color]) => `text-zinc-200 op50 px-2.5 py-1 transition-all duration-200 ease-out no-underline! hover:op100 hover:text-${color} hover:bg-${color}/10 border border-solid border-base! rounded`],
   ],
   presets: [
     presetWind3(),
+    presetUno(),
     presetIcons({
       extraProperties: {
         'display': 'inline-block',
@@ -27,7 +30,7 @@ export default defineConfig({
     presetAttributify(),
     presetWebFonts({
       fonts: {
-        sans: 'Inter',
+        sans: 'Inter:400,600,700,900',
         mono: 'JetBrains Mono',
       },
     }),

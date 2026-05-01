@@ -8,10 +8,10 @@ function slug(name: string) {
 
 <template>
     <div class="max-w-300 mx-auto">
-        <p text-center mt--6 mb5 op50 text-lg italic>
+        <p text-center mt--6 mb5 op50 text-lg>
             Creator, contributor, or maintainer.
         </p>
-        <div class="prose pb5 mx-auto mt10 text-center">
+        <div class="pb5 mx-auto mt10 text-center">
             <div flex="~ gap-2 justify-center">
                 <a
                     href="https://github.com/daniswastaken"
@@ -27,7 +27,7 @@ function slug(name: string) {
                 <a
                     href="https://www.curseforge.com/members/daniswastaken/projects"
                     target="_blank"
-                    class="group btn-lime inline-block"
+                    class="group btn-orange inline-block"
                 >
                     <div
                         i-simple-icons-curseforge
@@ -36,11 +36,12 @@ function slug(name: string) {
                     CurseForge
                 </a>
             </div>
-            <hr />
+            <hr class="mt-8 opacity-20" />
         </div>
         <div
-            v-for="(key, cidx) in Object.keys(projects)"
+            v-for="(key) in Object.keys(projects)"
             :key="key"
+            class="mb-10"
         >
             <div
                 :id="slug(key)"
@@ -48,25 +49,41 @@ function slug(name: string) {
                 relative
                 h18
                 mt5
+                mb-2
                 pointer-events-none
             >
                 <span
-                    text-5em
+                    text-7em
                     color-transparent
                     absolute
-                    left--1rem
-                    top-0rem
-                    font-bold
+                    left--6rem
+                    top="1/2"
+                    translate-y="-1/2"
+                    font-black
                     leading-1em
                     text-stroke-1.5
                     text-stroke-hex-aaa
-                    op35
+                    op20
                     dark:op20
+                    uppercase
+                    class="backgroundKey"
                     >{{ key }}</span
                 >
+                <!-- The normal text on top -->
+                <span
+                    absolute
+                    text-3.5em
+                    left--2rem
+                    top="1/2"
+                    translate-y="-1/2"
+                    font-black
+                    uppercase
+                >
+                    {{ key }}
+                </span>
             </div>
             <div
-                class="project-grid py-2 max-w-500 w-max mx-auto"
+                class="project-grid py-2 mb-8 max-w-500 w-max mx-auto"
                 grid="~ cols-1 md:cols-2 gap-4 lg:cols-3"
             >
                 <a
@@ -80,7 +97,7 @@ function slug(name: string) {
                     <div class="flex-auto">
                         <div class="text-normal">{{ item.name }}</div>
                         <div
-                            class="desc text-sm opacity-50 font-normal"
+                            class="desc text-sm font-normal transition-colors"
                             v-html="item.desc"
                         />
                     </div>
@@ -97,10 +114,22 @@ function slug(name: string) {
     width: 350px;
     max-width: 100%;
     padding: 0.5rem 0.875rem 0.875rem;
-    border-radius: 6px;
+    border-radius: 3px;
+    color: #8A8B8C;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.project-grid a.item .desc {
+    color: #3D3E3F;
 }
 
 .project-grid a.item:hover {
     background: #88888811;
+    color: inherit;
+}
+
+.project-grid a.item:hover .desc {
+    color: #8A8B8C;
 }
 </style>
