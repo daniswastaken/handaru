@@ -1,27 +1,16 @@
 ---
-// Import Layout and your Vue component
+import Layout from '../layouts/Layout.astro';
 import ProjectsComponent from '../components/parser/Projects.vue';
-
-// Import the markdown file
 import * as projectsFile from '../contents/projects.md';
 
-// Extract the 'projects' object from the markdown frontmatter
 const { projects } = projectsFile.frontmatter;
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <title>Projects - Handaru</title>
-    </head>
-    <body class="font-sans bg-[#050505] text-zinc-100 min-h-screen overflow-x-hidden selection:bg-blue/30">
-        <main class="max-w-6xl mx-auto px-6 pt-20">
-            <h1 class="text-4xl font-bold mb-10 text-center tracking-tight">Projects</h1>
-            
-            <!-- Pass the projects data to Vue Projects component -->
-            <ProjectsComponent projects={projects} />
-        </main>
-    </body>
-</html>
+<Layout title="Projects - Handaru">
+    <main class="max-w-6xl mx-auto px-6 pt-20">
+        <h1 class="text-4xl font-bold mb-10 text-center tracking-tight">Projects</h1>
+        
+        <!-- Pass the projects data to Vue Projects component -->
+        <ProjectsComponent projects={projects} client:load />
+    </main>
+</Layout>

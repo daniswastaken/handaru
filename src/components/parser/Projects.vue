@@ -3,6 +3,11 @@ import BedrockPerfected from "../icons/BedrockPerfected.vue";
 import Grafika from "../icons/Grafika.vue";
 import InfiniteChemistry from "../icons/InfiniteChemistry.vue";
 import Prefect from "../icons/Prefect.vue";
+import Biomify from "../icons/Biomify.vue";
+import CustomTitleTemplate from "../icons/CustomTitleTemplate.vue";
+import BedrockTweaks from "../icons/BedrockTweaks.vue";
+import Icona from "../icons/Icona.vue";
+import Inperta from "../icons/Inperta.vue";
 
 defineProps<{ projects: Record<string, any[]> }>();
 
@@ -110,6 +115,31 @@ function slug(name: string) {
                             style="width: 2.25rem; height: 2.25rem;"
                             class="opacity-50"
                         />
+                        <Biomify
+                            v-else-if="item.icon === 'Biomify'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <CustomTitleTemplate
+                            v-else-if="item.icon === 'CustomTitleTemplate'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <BedrockTweaks
+                            v-else-if="item.icon === 'BedrockTweaks'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <Icona
+                            v-else-if="item.icon === 'Icona'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <Inperta
+                            v-else-if="item.icon === 'Inperta'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
                         <div
                             v-else
                             class="text-3xl opacity-50"
@@ -153,5 +183,13 @@ function slug(name: string) {
 
 .project-grid a.item:hover .desc {
     color: #8a8b8c;
+}
+
+.project-grid a.item .opacity-50 {
+    transition: opacity 0.3s ease;
+}
+
+.project-grid a.item:hover .opacity-50 {
+    opacity: 0.9;
 }
 </style>
