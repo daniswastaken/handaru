@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BlogComponent from '../components/parser/Blog.vue';
+
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const allPosts = await getCollection('posts');
+
+const posts = allPosts
+    .map((post: CollectionEntry<'posts'>) => {
+        return {
+            title: post.data.title,
+            url: '/blog/' + post.id,
+            date: post.data.date,
+            duration: post.data.duration,
+            lang: post.data.lang,
+            draft: post.data.draft,
+            recommend: post.data.recommend
+        };
+    })
+    .filter((post: any) => post.date && !post.draft);
+
+
+posts.sort((a: any, b: any) => b.date!.getTime() - a.date!.getTime());
+
+const groupedPosts: Record<number, any[]> = {};
+posts.forEach((post: any) => {
+    const year = post.date!.getFullYear();
+    if (!groupedPosts[year]) {
+        groupedPosts[year] = [];
+    }
+    groupedPosts[year].push({
+        ...post,
+        dateFormatted: post.date!.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+    });
+});
+---
+
+<Layout title="Blog - Handaru">
+    <main class="max-w-6xl mx-auto px-6 pt-20 pb-20">
+        <h1 class="text-4xl font-bold mb-10 text-center tracking-tight">Blogs</h1>
+        <BlogComponent groupedPosts={groupedPosts} client:load />
+    </main>
+</Layout>

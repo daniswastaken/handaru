@@ -30,8 +30,9 @@ export default defineConfig({
     presetAttributify(),
     presetWebFonts({
       fonts: {
-        sans: 'Inter:400,600,700,900',
+        sans: 'Inter:400,500,600,700,900',
         mono: 'JetBrains Mono',
+        dm: 'DM Mono',
       },
     }),
   ],

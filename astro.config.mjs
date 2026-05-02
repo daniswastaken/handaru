@@ -9,4 +9,10 @@ export default defineConfig({
     vue(),
     unocss(),
   ],
+  markdown: {
+    shikiConfig: {
+      theme: 'one-dark-pro',
+      wrap: true,
+    },
+  },
 });
