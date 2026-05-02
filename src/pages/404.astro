@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NotFound from "../components/parser/404.vue";
+import * as content from "../contents/404.md";
+
+const { title, message } = content.frontmatter;
+---
+
+<Layout title="Handaru" mainClass="flex-none" bodyClass="h-auto">
+    <NotFound title={title} message={message} client:load />
+</Layout>
+
+<style is:global>
+    /* Clean, non-jittery override */
+    footer {
+        margin-top: 3rem !important;
+    }
+</style>

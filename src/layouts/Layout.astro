@@ -4,9 +4,11 @@ import Footer from '../components/Footer.vue';
 
 interface Props {
 	title: string;
+	mainClass?: string;
+	bodyClass?: string;
 }
 
-const { title } = Astro.props;
+const { title, mainClass = "flex-1", bodyClass = "min-h-screen" } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,9 +21,9 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="font-sans bg-[#050505] text-zinc-100 min-h-screen flex flex-col overflow-x-hidden selection:bg-blue/30">
+	<body class={`font-sans text-zinc-100 ${bodyClass} flex flex-col overflow-x-hidden selection:bg-blue/30`}>
 		<NavBar client:load />
-		<div class="flex-1">
+		<div class={mainClass}>
 			<slot />
 		</div>
 		<Footer client:load />
@@ -43,8 +45,35 @@ const { title } = Astro.props;
 	html {
 		font-family: 'Inter', system-ui, sans-serif;
 		background: #050505;
+		overflow-y: auto;
+		scrollbar-gutter: stable;
 	}
     a {
         text-decoration: none;
     }
+
+	/* Scrollbar styling */
+	* {
+		scrollbar-color: #111 #050505;
+		scrollbar-width: thin;
+	}
+
+	::-webkit-scrollbar {
+		width: 6px;
+	}
+	::-webkit-scrollbar:horizontal {
+		height: 6px;
+	}
+	::-webkit-scrollbar-track,
+	::-webkit-scrollbar-corner {
+		background: #050505;
+		border-radius: 10px;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #111;
+		border-radius: 10px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #222;
+	}
 </style>
