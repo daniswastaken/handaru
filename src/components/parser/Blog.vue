@@ -92,7 +92,7 @@ function slug(name: string) {
                     :href="post.url"
                     class="item relative flex items-center justify-between no-underline transition-all"
                 >
-                    <div v-if="isFiltering && post.recommend" i-ph-star-duotone class="absolute left--10 top-1/2 -translate-y-1/2 text-yellow op100" title="Recommended" />
+                    <div v-if="isFiltering && post.recommend" i-ph-star-duotone class="recommend-star absolute left--10 top-1/2 -translate-y-1/2 text-yellow op100" title="Recommended" />
                     <div class="flex-auto">
                         <div class="text-base font-normal">
                             {{ post.title }}
@@ -125,6 +125,7 @@ function slug(name: string) {
     color: #ccc;
 }
 
+
 @media (max-width: 640px) {
     .item {
         width: 100%;
@@ -133,29 +134,34 @@ function slug(name: string) {
 
 @media (max-width: 768px) {
     /* Mobile Section Title Adjustments */
-    /* To keep them perfectly centered relative to each other, use transform instead of left */
     .backgroundKey {
-        transform: translateX(-8.5rem) !important;
-        left: auto !important;
+        transform: none !important;
+        position: absolute !important;
+        left: -3.7rem !important;
     }
     
     .backgroundKey + span {
-        transform: translateX(-8.5rem) !important;
-        left: auto !important;
+        transform: none !important;
+        position: absolute !important;
+        left: 0rem !important;
         margin-left: 0 !important;
     }
 
-    /* Fix container offset on mobile */
-    .backgroundKey[class*="ml-"], 
-    .backgroundKey + span[class*="ml-"],
-    .backgroundKey + span + div[class*="ml-"],
-    .backgroundKey:parent {
-        margin-left: 0 !important;
+    .item {
+        padding-left: 2.5rem !important;
     }
-    
+
+    .recommend-star {
+        left: 0.75rem !important;
+    }
+
     /* Blog specific parent centering fix */
     div[class*="ml--250px"] {
         margin-left: 0 !important;
+        left: 0 !important;
+        width: 100%;
+        transform: translateY(-50%) !important;
+        justify-content: flex-start !important;
     }
 }
 </style>
