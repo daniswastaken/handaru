@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.18",
     "@astrojs/vue": "^6.0.1",
     "@unocss/astro": "^66.6.8",
     "astro": "^6.1.10",
