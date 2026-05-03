@@ -171,7 +171,7 @@ function slug(name: string) {
     border-radius: 3px;
     color: #8a8b8c;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
 }
 
 .project-grid a.item .desc {
@@ -198,6 +198,17 @@ function slug(name: string) {
 @media (max-width: 640px) {
     .item {
         width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile Section Title Adjustments */
+    .backgroundKey {
+        left: -4.5rem !important;
+    }
+    
+    .backgroundKey + span {
+        left: 0rem !important;
     }
 }
 </style>

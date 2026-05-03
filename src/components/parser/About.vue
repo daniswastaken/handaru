@@ -50,3 +50,16 @@ defineProps<{
         </div>
     </div>
 </template>
+
+<style scoped>
+@media (max-width: 768px) {
+    /* Mobile Section Title Adjustments */
+    .backgroundKey {
+        left: -4.5rem !important;
+    }
+    
+    .backgroundKey + span {
+        left: 0rem !important;
+    }
+}
+</style>

@@ -172,7 +172,7 @@ function slug(name: string) {
     border-radius: 4px;
     color: #8a8b8c;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
 }
 
 .item:hover {
@@ -193,6 +193,17 @@ function slug(name: string) {
     .item > div:last-child {
         margin-left: 0;
         margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile Section Title Adjustments */
+    .backgroundKey {
+        left: -4rem !important;
+    }
+    
+    .backgroundKey + span {
+        left: 0rem !important;
     }
 }
 </style>

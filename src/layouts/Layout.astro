@@ -1,7 +1,7 @@
 ---
 import NavBar from "../components/NavBar.vue";
 import Footer from "../components/Footer.vue";
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
     title: string;
@@ -22,6 +22,20 @@ const { title, mainClass = "flex-1", bodyClass = "min-h-screen" } = Astro.props;
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
         <ClientRouter />
+        <style is:inline>
+            /* Truly global scrollbar hiding */
+            html,
+            body,
+            * {
+                scrollbar-width: none !important;
+                -ms-overflow-style: none !important;
+            }
+            ::-webkit-scrollbar {
+                display: none !important;
+                width: 0 !important;
+                height: 0 !important;
+            }
+        </style>
     </head>
     <body
         transition:animate="none"
@@ -56,6 +70,17 @@ const { title, mainClass = "flex-1", bodyClass = "min-h-screen" } = Astro.props;
         background-color: var(--c-bg);
         overflow-x: hidden;
         overflow-y: scroll;
+        scrollbar-width: none; /* Hide for Firefox */
+        -ms-overflow-style: none; /* Hide for IE/Edge */
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar,
+    *::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
     }
 
     body {
@@ -65,26 +90,7 @@ const { title, mainClass = "flex-1", bodyClass = "min-h-screen" } = Astro.props;
     }
 
     * {
-        scrollbar-color: var(--c-scrollbar) var(--c-bg);
-    }
-
-    ::-webkit-scrollbar {
-        width: 6px;
-    }
-    ::-webkit-scrollbar:horizontal {
-        height: 6px;
-    }
-    ::-webkit-scrollbar-track,
-    ::-webkit-scrollbar-corner {
-        background: var(--c-bg);
-        border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: var(--c-scrollbar);
-        border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: var(--c-scrollbar-hover);
+        scrollbar-width: none !important;
     }
 
     a {

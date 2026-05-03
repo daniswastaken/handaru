@@ -117,7 +117,7 @@ function slug(name: string) {
     border-radius: 3px;
     color: #8a8b8c;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
 }
 
 .item:hover {
@@ -128,6 +128,34 @@ function slug(name: string) {
 @media (max-width: 640px) {
     .item {
         width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile Section Title Adjustments */
+    /* To keep them perfectly centered relative to each other, use transform instead of left */
+    .backgroundKey {
+        transform: translateX(-8.5rem) !important;
+        left: auto !important;
+    }
+    
+    .backgroundKey + span {
+        transform: translateX(-8.5rem) !important;
+        left: auto !important;
+        margin-left: 0 !important;
+    }
+
+    /* Fix container offset on mobile */
+    .backgroundKey[class*="ml-"], 
+    .backgroundKey + span[class*="ml-"],
+    .backgroundKey + span + div[class*="ml-"],
+    .backgroundKey:parent {
+        margin-left: 0 !important;
+    }
+    
+    /* Blog specific parent centering fix */
+    div[class*="ml--250px"] {
+        margin-left: 0 !important;
     }
 }
 </style>
