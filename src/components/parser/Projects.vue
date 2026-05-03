@@ -66,6 +66,7 @@ function slug(name: string) {
                     op20
                     dark:op20
                     uppercase
+                    whitespace-nowrap
                     class="backgroundKey"
                     >{{ key }}</span
                 >
@@ -78,12 +79,13 @@ function slug(name: string) {
                     translate-y="-1/2"
                     font-black
                     uppercase
+                    whitespace-nowrap
                 >
                     {{ key }}
                 </span>
             </div>
             <div
-                class="project-grid py-2 mb-8 mx-auto w-fit"
+                class="project-grid py-2 mb-8 mx-auto w-fit justify-items-center md:justify-items-start"
                 grid="~ cols-1 md:cols-2 lg:cols-3 gap-x-8 gap-y-4"
             >
                 <a
@@ -191,5 +193,11 @@ function slug(name: string) {
 
 .project-grid a.item:hover .opacity-50 {
     opacity: 0.9;
+}
+
+@media (max-width: 640px) {
+    .item {
+        width: 100%;
+    }
 }
 </style>

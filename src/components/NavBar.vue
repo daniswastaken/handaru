@@ -8,8 +8,14 @@ import Logo from './icons/Logo.vue';
       <Logo class="h-7 w-auto" />
     </a>
     <div class="flex items-center gap-5 font-sans text-base font-500 text-[#8b8b8b]">
-      <a href="/projects" class="text-[#8b8b8b] hover:text-[#DDDDDD] transition-colors no-underline">Projects</a>
-      <a href="/blog" class="text-[#8b8b8b] hover:text-[#DDDDDD] transition-colors no-underline">Blog</a>
+      <a href="/projects" class="text-[#8b8b8b] hover:text-[#DDDDDD] transition-colors no-underline flex items-center" title="Projects" aria-label="Projects">
+        <span class="md:hidden i-ph-lightbulb text-xl"></span>
+        <span class="hidden md:inline">Projects</span>
+      </a>
+      <a href="/blog" class="text-[#8b8b8b] hover:text-[#DDDDDD] transition-colors no-underline flex items-center" title="Blog" aria-label="Blog">
+        <span class="md:hidden i-ph-flag-banner text-xl"></span>
+        <span class="hidden md:inline">Blog</span>
+      </a>
       <a href="/paper" class="i-ph-feather text-xl text-[#8b8b8b] hover:text-[#DDDDDD] transition-colors no-underline" title="Paper" aria-label="Paper"></a>
       <a href="https://github.com/daniswastaken?tab=overview&from=2026-05-01&to=2026-05-02" target="_blank" rel="noopener noreferrer" class="i-ph-github-logo text-xl text-[#8b8b8b] hover:text-[#DDDDDD] transition-colors no-underline" title="GitHub" aria-label="GitHub"></a>
     </div>

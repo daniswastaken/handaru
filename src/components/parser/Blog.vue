@@ -68,6 +68,7 @@ function slug(name: string) {
                         op20
                         dark:op20
                         uppercase
+                        whitespace-nowrap
                         class="backgroundKey"
                     >
                         {{ year }}
@@ -77,13 +78,14 @@ function slug(name: string) {
                         text-3.5em
                         font-black
                         uppercase
+                        whitespace-nowrap
                     >
                         {{ year }}
                     </span>
                 </div>
             </div>
 
-            <div class="flex flex-col gap-1 py-2 mb-8 mx-auto w-fit">
+            <div class="flex flex-col items-center md:items-start gap-1 py-2 mb-8 mx-auto w-fit">
                 <a
                     v-for="post in filteredGroups[year]"
                     :key="post.url"
@@ -121,5 +123,11 @@ function slug(name: string) {
 .item:hover {
     background: #88888811;
     color: #ccc;
+}
+
+@media (max-width: 640px) {
+    .item {
+        width: 100%;
+    }
 }
 </style>

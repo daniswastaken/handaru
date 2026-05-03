@@ -1,11 +1,12 @@
 ---
-import NavBar from '../components/NavBar.vue';
-import Footer from '../components/Footer.vue';
+import NavBar from "../components/NavBar.vue";
+import Footer from "../components/Footer.vue";
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
-	title: string;
-	mainClass?: string;
-	bodyClass?: string;
+    title: string;
+    mainClass?: string;
+    bodyClass?: string;
 }
 
 const { title, mainClass = "flex-1", bodyClass = "min-h-screen" } = Astro.props;
@@ -13,67 +14,86 @@ const { title, mainClass = "flex-1", bodyClass = "min-h-screen" } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Handaru Portfolio" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class={`font-sans text-zinc-100 ${bodyClass} flex flex-col overflow-x-hidden selection:bg-blue/30`}>
-		<NavBar client:load />
-		<div class={mainClass}>
-			<slot />
-		</div>
-		<Footer client:load />
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Handaru Portfolio" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <ClientRouter />
+    </head>
+    <body
+        transition:animate="none"
+        class={`font-sans text-zinc-100 ${bodyClass} flex flex-col overflow-x-hidden selection:bg-blue/30`}
+    >
+        <NavBar client:load />
+        <div class={mainClass}>
+            <slot />
+        </div>
+        <Footer client:load />
+    </body>
 </html>
 
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: 'Inter', system-ui, sans-serif;
-		background: #050505;
-		overflow-y: auto;
-		scrollbar-gutter: stable;
-	}
+    :root {
+        --c-bg: #050505;
+        --c-scrollbar: #111;
+        --c-scrollbar-hover: #222;
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+            45deg,
+            rgb(var(--accent)),
+            rgb(var(--accent-light)) 30%,
+            white 60%
+        );
+    }
+
+    html {
+        font-family: "Inter", system-ui, sans-serif;
+        background-color: var(--c-bg);
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+    body {
+        width: 100%;
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    * {
+        scrollbar-color: var(--c-scrollbar) var(--c-bg);
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    ::-webkit-scrollbar:horizontal {
+        height: 6px;
+    }
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-corner {
+        background: var(--c-bg);
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--c-scrollbar);
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--c-scrollbar-hover);
+    }
+
     a {
         text-decoration: none;
     }
 
-	/* Scrollbar styling */
-	* {
-		scrollbar-color: #111 #050505;
-		scrollbar-width: thin;
-	}
-
-	::-webkit-scrollbar {
-		width: 6px;
-	}
-	::-webkit-scrollbar:horizontal {
-		height: 6px;
-	}
-	::-webkit-scrollbar-track,
-	::-webkit-scrollbar-corner {
-		background: #050505;
-		border-radius: 10px;
-	}
-	::-webkit-scrollbar-thumb {
-		background: #111;
-		border-radius: 10px;
-	}
-	::-webkit-scrollbar-thumb:hover {
-		background: #222;
-	}
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none;
+        mix-blend-mode: normal;
+    }
 </style>

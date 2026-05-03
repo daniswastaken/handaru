@@ -116,6 +116,7 @@ function slug(name: string) {
                     op20
                     dark:op20
                     uppercase
+                    whitespace-nowrap
                     class="backgroundKey"
                     >{{ key }}</span
                 >
@@ -127,12 +128,13 @@ function slug(name: string) {
                     translate-y="-1/2"
                     font-black
                     uppercase
+                    whitespace-nowrap
                 >
                     {{ key }}
                 </span>
             </div>
 
-            <div class="flex flex-col gap-1 py-2 mb-8 mx-auto w-fit">
+            <div class="flex flex-col items-center md:items-start gap-1 py-2 mb-8 mx-auto w-fit">
                 <a
                     v-for="(item, idx) in filteredPapers[key]"
                     :key="idx"
@@ -186,8 +188,6 @@ function slug(name: string) {
 @media (max-width: 640px) {
     .item {
         width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
     }
     
     .item > div:last-child {
