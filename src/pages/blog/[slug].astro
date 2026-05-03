@@ -82,14 +82,21 @@ const formattedDate = date.toLocaleDateString("en-US", {
 <style is:global>
     /* Base typography */
     .prose {
-        color: #d4d4d8;
+        color: #BBBBBB; /* Changed from #d4d4d8 */
         font-size: 1rem;
         line-height: 1.75;
     }
 
+    /* Special writing styles */
     .prose p {
         margin-bottom: 1.5rem;
     }
+    /* Special styles for bold, inline code, underline */
+    .prose strong, .prose b, .prose code, .prose u {
+        color: #DDDDDD;
+    }
+    /* Note: "inline block" is a display property, not a color. Assuming "inline code" (<code>) was intended. "Underline" (<u>) also added. */
+
 
     /* Headings */
     .prose h1,
@@ -119,7 +126,7 @@ const formattedDate = date.toLocaleDateString("en-US", {
 
     /* Links */
     .prose a {
-        color: #fff;
+        color: #fff; /* Links have different color, they are special */
         text-decoration: underline;
         text-decoration-color: rgba(255, 255, 255, 0.3);
         text-underline-offset: 4px;
@@ -183,6 +190,7 @@ const formattedDate = date.toLocaleDateString("en-US", {
         background: rgba(120, 120, 120, 0.15);
         padding: 0.2em 0.4em;
         border-radius: 0.25rem;
+        /* color: #DDDDDD; -- This is now handled by the new rule */
     }
     .prose pre code {
         background: transparent;

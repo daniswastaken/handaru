@@ -6,7 +6,7 @@ duration: 4 min
 recommend: true
 ---
 
-I'm excited and so happy that I can finally tell the world the journey on making this website come to live. 
+I'm really excited and so happy that I can finally tell the world the journey on making this website come to live. 
 
 I won't went very technical on this, but rather on the memorable event that happens.
 
