@@ -1,25 +1,29 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { getCollection, render } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-    const posts = await getCollection('posts');
-    
-    return posts.map((post: CollectionEntry<'posts'>) => ({
+    const posts = await getCollection("posts");
+
+    return posts.map((post: CollectionEntry<"posts">) => ({
         params: { slug: post.id },
-        props: { post }
+        props: { post },
     }));
 }
 
 const { post } = Astro.props as any;
 if (!post) {
-    return Astro.redirect('/404');
+    return Astro.redirect("/404");
 }
 
 const { Content } = await render(post);
 const { title, date, duration } = post.data;
-const formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+const formattedDate = date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+});
 ---
 
 <Layout title={`${title} - Handaru`}>
@@ -32,14 +36,17 @@ const formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'nu
                 <span>{duration}</span>
             </div>
         </header>
-        
+
         <article class="prose">
             <Content />
         </article>
 
         <div class="mt-20">
             <span class="font-dm op30 mr-2">&gt;</span>
-            <a href="/blog" class="op50 hover:op100 transition-opacity font-mono w-fit text-current">
+            <a
+                href="/blog"
+                class="op50 hover:op100 transition-opacity font-mono w-fit text-current"
+            >
                 cd ..
             </a>
         </div>
@@ -47,100 +54,139 @@ const formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'nu
 </Layout>
 
 <style is:global>
-/* Base typography */
-.prose {
-    color: #d4d4d8;
-    font-size: 1rem;
-    line-height: 1.75;
-}
+    .prose table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+    }
 
-.prose p {
-    margin-bottom: 1.5rem;
-}
+    .prose th {
+        text-align: left;
+        padding: 0.75rem 1rem;
+        border-bottom: 2px solid #8882;
+        font-weight: 600;
+        op: 80;
+    }
 
-/* Headings */
-.prose h1, .prose h2, .prose h3, .prose h4 {
-    color: #fff;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    line-height: 1.3;
-}
-.prose h1 { font-size: 2.25rem; }
-.prose h2 { font-size: 1.875rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.3em; }
-.prose h3 { font-size: 1.5rem; }
-.prose h4 { font-size: 1.25rem; }
+    .prose td {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #8881;
+        op: 70;
+    }
 
-/* Links */
-.prose a {
-    color: #fff;
-    text-decoration: underline;
-    text-decoration-color: rgba(255, 255, 255, 0.3);
-    text-underline-offset: 4px;
-    transition: all 0.2s;
-}
-.prose a:hover {
-    text-decoration-color: #fff;
-}
+    .prose tr:last-child td {
+        border-bottom: none;
+    }
+</style>
 
-/* Lists */
-.prose ul {
-    list-style-type: disc;
-    margin-left: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-.prose ol {
-    list-style-type: decimal;
-    margin-left: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-.prose li {
-    margin-bottom: 0.5rem;
-}
+<style is:global>
+    /* Base typography */
+    .prose {
+        color: #d4d4d8;
+        font-size: 1rem;
+        line-height: 1.75;
+    }
 
-/* Blockquotes & Misc */
-.prose blockquote {
-    border-left: 3px solid rgba(255, 255, 255, 0.2);
-    padding-left: 1.25rem;
-    margin-left: 0;
-    margin-right: 0;
-    font-style: italic;
-    opacity: 0.8;
-}
-.prose hr {
-    border: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 3rem auto;
-    width: 50px;
-}
-.prose img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.375rem;
-    margin: 2rem 0;
-}
+    .prose p {
+        margin-bottom: 1.5rem;
+    }
 
-/* Code blocks */
-.prose pre {
-    padding: 1.25rem 1.5rem;
-    border-radius: 0.5rem;
-    overflow-x: auto;
-    margin: 1.5rem 0;
-    background-color: #111 !important;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
+    /* Headings */
+    .prose h1,
+    .prose h2,
+    .prose h3,
+    .prose h4 {
+        color: #fff;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    .prose h1 {
+        font-size: 2.25rem;
+    }
+    .prose h2 {
+        font-size: 1.875rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 0.3em;
+    }
+    .prose h3 {
+        font-size: 1.5rem;
+    }
+    .prose h4 {
+        font-size: 1.25rem;
+    }
 
-/* Inline and block code fonts mapped to JetBrains Mono */
-.prose code {
-    font-family: 'JetBrains Mono', monospace !important;
-    font-size: 0.875em;
-    background: rgba(120, 120, 120, 0.15);
-    padding: 0.2em 0.4em;
-    border-radius: 0.25rem;
-}
-.prose pre code {
-    background: transparent;
-    padding: 0;
-    font-size: 0.9em;
-}
+    /* Links */
+    .prose a {
+        color: #fff;
+        text-decoration: underline;
+        text-decoration-color: rgba(255, 255, 255, 0.3);
+        text-underline-offset: 4px;
+        transition: all 0.2s;
+    }
+    .prose a:hover {
+        text-decoration-color: #fff;
+    }
+
+    /* Lists */
+    .prose ul {
+        list-style-type: disc;
+        margin-left: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .prose ol {
+        list-style-type: decimal;
+        margin-left: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .prose li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Blockquotes & Misc */
+    .prose blockquote {
+        border-left: 3px solid rgba(255, 255, 255, 0.2);
+        padding-left: 1.25rem;
+        margin-left: 0;
+        margin-right: 0;
+        font-style: italic;
+        opacity: 0.8;
+    }
+    .prose hr {
+        border: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin: 3rem auto;
+        width: 50px;
+    }
+    .prose img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.375rem;
+        margin: 2rem 0;
+    }
+
+    /* Code blocks */
+    .prose pre {
+        padding: 1.25rem 1.5rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+        background-color: #111 !important;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Inline and block code fonts mapped to JetBrains Mono */
+    .prose code {
+        font-family: "JetBrains Mono", monospace !important;
+        font-size: 0.875em;
+        background: rgba(120, 120, 120, 0.15);
+        padding: 0.2em 0.4em;
+        border-radius: 0.25rem;
+    }
+    .prose pre code {
+        background: transparent;
+        padding: 0;
+        font-size: 0.9em;
+    }
 </style>
