@@ -16,6 +16,7 @@ defineProps<{
             pointer-events-none
         >
             <span
+                aria-hidden="true"
                 text-7em
                 color-transparent
                 absolute
@@ -35,7 +36,7 @@ defineProps<{
                 {{ backgroundTitle }}
             </span>
             <!-- The normal text on top -->
-            <span
+            <h1
                 absolute
                 text-3.5em
                 left--3rem
@@ -44,9 +45,10 @@ defineProps<{
                 font-black
                 uppercase
                 whitespace-nowrap
+                m-0
             >
                 {{ mainTitle }}
-            </span>
+            </h1>
         </div>
     </div>
 </template>
