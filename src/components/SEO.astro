@@ -9,7 +9,7 @@ export interface Props {
 
 const {
   title,
-  description = "Handaru Daniswara (daniswastaken) - Software Engineer and Researcher. Explore my portfolio, projects, and perspectives.",
+  description = "Handaru Daniswara Al Fatih (daniswastaken) - Software Engineer and Researcher. Exploring the intersection of code, research, and minimalist design.",
   image = "/og-image.png",
   canonicalUrl = Astro.url.href,
   type = "website",
@@ -22,17 +22,37 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Handaru Daniswara Al Fatih",
-  "alternateName": ["Handaru", "Danis", "Handaru Daniswara", "daniswastaken", "Danis Handaru"],
+  "givenName": "Handaru",
+  "familyName": "Daniswara Al Fatih",
+  "alternateName": [
+    "Handaru", 
+    "Danis", 
+    "Handaru Daniswara", 
+    "daniswastaken", 
+    "Danis Handaru", 
+    "Handaru Daniswara Al Fatih"
+  ],
   "url": siteUrl,
+  "image": ogImage,
+  "description": description,
   "jobTitle": "Software Engineer & Researcher",
+  "knowsAbout": [
+    "Software Engineering",
+    "Computer Science Research",
+    "Web Development",
+    "Astro",
+    "Vue.js"
+  ],
   "sameAs": [
-    "https://github.com/daniswastaken"
+    "https://github.com/daniswastaken",
+    "https://x.com/daniswastaken"
   ]
 };
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
+<meta name="keywords" content="handaru, handaru daniswara, handaru daniswara al fatih, danis, danis handaru, daniswastaken, software engineer, researcher" />
 <link rel="canonical" href={canonicalUrl} />
 
 <!-- Open Graph / Facebook -->
