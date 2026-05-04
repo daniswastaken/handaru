@@ -60,7 +60,7 @@ defineProps<{
         left: -4.5rem !important;
     }
     
-    .backgroundKey + span {
+    .backgroundKey + h1 {
         left: 0rem !important;
     }
 }
