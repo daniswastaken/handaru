@@ -4,7 +4,7 @@ import Logo from './icons/Logo.vue';
 
 <template>
   <nav class="w-full flex items-center justify-between px-8 pt-4 pb-8 box-border">
-    <a href="/" class="text-[#8b8b8b] hover:text-[#DDDDDD] transition-colors no-underline flex items-center">
+    <a href="/" class="text-[#8b8b8b] hover:text-[#DDDDDD] transition-colors no-underline flex items-center" title="Home" aria-label="Home">
       <Logo class="h-7 w-auto" />
     </a>
     <div class="flex items-center gap-5 font-sans text-base font-500 text-[#8b8b8b]">

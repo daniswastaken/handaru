@@ -138,23 +138,23 @@ function slug(name: string) {
                 <a
                     v-for="(item, idx) in filteredPapers[key]"
                     :key="idx"
-                    class="item relative flex items-center justify-between no-underline transition-all"
+                    class="item relative flex items-start justify-between no-underline transition-all"
                     :href="item.link"
                     target="_blank"
                 >
-                    <div class="flex-auto">
-                        <div class="flex items-center gap-2">
-                            <div i-ph-file-pdf-duotone class="text-xl op70" />
-                            <div class="text-base font-normal">
-                                {{ item.name }}
-                            </div>
+                    <div class="flex-auto pr-2">
+                        <div class="text-base font-normal">
+                            {{ item.name }}
                         </div>
                         <div class="desc text-sm font-normal mt-1 op50">
                             {{ item.desc }}
                         </div>
                     </div>
-                    <div class="text-sm font-mono op50 ml-4 whitespace-nowrap self-start mt-1 tracking-tighter">
-                        {{ item.date }}
+                    <div class="flex flex-col items-end justify-between self-stretch ml-4">
+                        <div class="text-sm font-mono op50 whitespace-nowrap tracking-tighter">
+                            {{ item.date }}
+                        </div>
+                        <div i-ph-file-pdf-duotone class="pdf-icon text-base op30 mt-2 flex-none" />
                     </div>
                 </a>
             </div>
@@ -183,6 +183,10 @@ function slug(name: string) {
 .item:hover .desc {
     color: #8a8b8c;
     opacity: 0.8;
+}
+
+.item:hover .pdf-icon {
+    opacity: 0.5;
 }
 
 @media (max-width: 640px) {

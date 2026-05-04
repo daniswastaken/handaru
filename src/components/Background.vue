@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, effectScope } from 'vue'
+import { onMounted, onUnmounted, ref, effectScope, nextTick } from 'vue'
 import { Application, Graphics, Sprite, Container } from 'pixi.js'
 import { createNoise3D } from 'simplex-noise'
 import { useEventListener } from '@vueuse/core'
@@ -12,11 +12,13 @@ const el = ref<HTMLDivElement | null>(null)
 let rawMouseX = -9999
 let rawMouseY = -9999
 let isMouseInWindow = false
+let isInteractionEnabled = true
+let isMobile = false
 
 const SPACING = 35
 const SCALE_BASE = 0.5
 const NOISE_SCALE = 200
-const INTERACTION_RADIUS = 150
+const INTERACTION_RADIUS = 135
 
 const noise3d = createNoise3D()
 const mountedScope = effectScope()
@@ -30,6 +32,8 @@ interface CrossPoint {
 
 let app: Application | null = null
 const points: CrossPoint[] = []
+const existingPoints = new Set<string>()
+let lastSpacing = -1
 let dprFix = 1
 
 async function init() {
@@ -40,8 +44,8 @@ async function init() {
     backgroundAlpha: 0,
     antialias: true,
     resolution: window.devicePixelRatio || 1,
-    resizeTo: el.value,
     eventMode: 'none',
+    autoDensity: true,
   })
 
   const canvas = app.canvas
@@ -51,6 +55,9 @@ async function init() {
   canvas.style.width = '100%'
   canvas.style.height = '100%'
   el.value.appendChild(canvas)
+
+  await nextTick()
+  app.renderer.resize(window.innerWidth, window.innerHeight)
 
   // Create Cross Texture
   const g = new Graphics()
@@ -65,22 +72,34 @@ async function init() {
   app.stage.addChild(container)
 
   function createGrid() {
-    container.removeChildren()
-    points.length = 0
-    
     const w = window.innerWidth
     const h = window.innerHeight
-    const isMobile = w < 768
+    isMobile = w < 768
+    isInteractionEnabled = !isMobile
     dprFix = isMobile ? (window.devicePixelRatio || 1) : 1
-    const currentSpacing = SPACING / dprFix
+    const mobileSpacingBoost = isMobile ? 1.2 : 1
+    const currentSpacing = (SPACING * mobileSpacingBoost) / dprFix
+
+    // If spacing changes (e.g. orientation change), clear and rebuild
+    if (currentSpacing !== lastSpacing) {
+      container.removeChildren()
+      points.length = 0
+      existingPoints.clear()
+      lastSpacing = currentSpacing
+    }
     
-    for (let x = currentSpacing / 2; x < w; x += currentSpacing) {
-      for (let y = currentSpacing / 2; y < h; y += currentSpacing) {
+    for (let x = currentSpacing / 2; x < w + currentSpacing; x += currentSpacing) {
+      for (let y = currentSpacing / 2; y < h + currentSpacing; y += currentSpacing) {
+        const id = `${Math.round(x)}-${Math.round(y)}`
+        if (existingPoints.has(id)) continue
+        existingPoints.add(id)
+
         const sprite = new Sprite(texture)
         sprite.anchor.set(0.5)
         sprite.position.set(x, y)
         sprite.alpha = 0
-        sprite.scale.set(SCALE_BASE / dprFix)
+        const mobileScaleBoost = isMobile ? 1.5 : 1
+        sprite.scale.set((SCALE_BASE * mobileScaleBoost) / dprFix)
         container.addChild(sprite)
         
         points.push({
@@ -113,7 +132,7 @@ async function init() {
       
       // Mouse interaction — read raw vars, not reactive refs
       let distSq = Infinity
-      if (isMouseInWindow) {
+      if (isMouseInWindow && isInteractionEnabled) {
         const dx = rawMouseX - baseX
         const dy = rawMouseY - baseY
         distSq = dx * dx + dy * dy
@@ -134,16 +153,19 @@ async function init() {
         sprite.rotation += (targetRotation + force * Math.PI - sprite.rotation) * 0.1
         // Boost alpha when hovered, but still keep the shimmer
         sprite.alpha += (Math.max(shimmerAlpha, 0.4 + force * 0.5) - sprite.alpha) * 0.1
-        sprite.scale.set((SCALE_BASE + force * 0.3) / dprFix)
+        const mobileScaleBoost = isMobile ? 1.5 : 1
+        sprite.scale.set(((SCALE_BASE * mobileScaleBoost) + force * 0.3) / dprFix)
       } else {
         sprite.x += (baseX + driftX - sprite.x) * 0.05
         sprite.y += (baseY + driftY - sprite.y) * 0.05
         
         sprite.rotation += (targetRotation - sprite.rotation) * 0.05
         // Apply exact shimmering alpha
-        sprite.alpha += (shimmerAlpha * 0.5 - sprite.alpha) * 0.05 // Scaled by 0.5 to keep background subtle
+        const alphaMultiplier = isMobile ? 0.60 : 0.50
+        sprite.alpha += (shimmerAlpha * alphaMultiplier - sprite.alpha) * 0.05
         
-        const targetScale = SCALE_BASE / dprFix
+        const mobileScaleBoost = isMobile ? 1.5 : 1
+        const targetScale = (SCALE_BASE * mobileScaleBoost) / dprFix
         sprite.scale.set(sprite.scale.x + (targetScale - sprite.scale.x) * 0.05)
       }
     }

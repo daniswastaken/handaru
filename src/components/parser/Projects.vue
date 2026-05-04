@@ -96,7 +96,7 @@ function slug(name: string) {
                     target="_blank"
                     :title="item.name"
                 >
-                    <div v-if="item.icon" class="pt-2 pr-5">
+                    <div v-if="item.icon" class="pt-2 pr-5 flex-none">
                         <BedrockPerfected
                             v-if="item.icon === 'BedrockPerfected'"
                             style="width: 2.25rem; height: 2.25rem;"
