@@ -44,7 +44,13 @@ async function init() {
     eventMode: 'none',
   })
 
-  el.value.appendChild(app.canvas)
+  const canvas = app.canvas
+  canvas.style.position = 'absolute'
+  canvas.style.top = '0'
+  canvas.style.left = '0'
+  canvas.style.width = '100%'
+  canvas.style.height = '100%'
+  el.value.appendChild(canvas)
 
   // Create Cross Texture
   const g = new Graphics()
@@ -145,8 +151,9 @@ async function init() {
 
   mountedScope.run(() => {
     useEventListener('resize', () => {
-      if (app) {
-        app.renderer.resize(window.innerWidth, window.innerHeight)
+      if (app && el.value) {
+        const { offsetWidth, offsetHeight } = el.value
+        app.renderer.resize(offsetWidth, offsetHeight)
         createGrid()
       }
     })
