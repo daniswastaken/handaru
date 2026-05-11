@@ -91,6 +91,7 @@ function slug(name: string) {
                     :key="post.url"
                     :href="post.url"
                     class="item relative flex items-center justify-between no-underline transition-all"
+                    :class="{ 'is-recommend': isFiltering && post.recommend }"
                 >
                     <div v-if="isFiltering && post.recommend" i-ph-star-duotone class="recommend-star absolute left--10 top-1/2 -translate-y-1/2 text-yellow op100" title="Recommended" />
                     <div class="flex-auto">
@@ -148,11 +149,15 @@ function slug(name: string) {
     }
 
     .item {
-        padding-left: 2.5rem !important;
+        padding-left: 0.875rem !important;
+    }
+
+    .item.is-recommend {
+        color: #fbbf24 !important;
     }
 
     .recommend-star {
-        left: 0.75rem !important;
+        display: none !important;
     }
 
     /* Blog specific parent centering fix */

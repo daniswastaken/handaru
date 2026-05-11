@@ -24,7 +24,7 @@ function slug(name: string) {
         <div class="pb5 mx-auto mt10 text-center">
             <div flex="~ gap-2 justify-center">
                 <a
-                    href="https://github.com/daniswastaken"
+                    href="https://github.com/daniswastaken?tab=overview&from=2026-05-01&to=2026-05-02"
                     target="_blank"
                     class="group btn-blue"
                 >
