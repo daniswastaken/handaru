@@ -27,11 +27,11 @@ function slug(name: string) {
         <div class="pb5 mx-auto mt10 text-center">
             <div flex="~ gap-2 justify-center">
                 <a
-                    class="group btn-yellow transition-all duration-300 cursor-pointer select-none"
+                    class="group btn-yellow cursor-pointer"
                     :class="isFiltering ? 'op100! text-yellow! bg-yellow/10' : ''"
                     @click="toggleFilter"
                 >
-                    <div :class="isFiltering ? 'i-ph-star-duotone' : 'i-ph-star'" group-hover:i-ph-star-duotone transition-all duration-200 />
+                    <div :class="isFiltering ? 'i-ph-star-duotone' : 'i-ph-star'" group-hover:i-ph-star-duotone />
                     Recommendations
                 </a>
             </div>

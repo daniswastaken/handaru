@@ -58,28 +58,28 @@ function slug(name: string) {
                 <div flex="~ gap-2 justify-center">
                     <a 
                         @click="activeLang = 'all'"
-                        class="bg-transparent group btn-emerald transition-all duration-300 cursor-pointer select-none"
+                        class="group btn-emerald cursor-pointer"
                         :class="activeLang === 'all' ? 'op100! text-emerald! bg-emerald/10' : ''"
                     >
-                        <div :class="activeLang === 'all' ? 'i-ph-asterisk-duotone' : 'i-ph-asterisk'" group-hover:i-ph-asterisk-duotone transition-all duration-200 /><span>All</span>
+                        <div :class="activeLang === 'all' ? 'i-ph-asterisk-duotone' : 'i-ph-asterisk'" group-hover:i-ph-asterisk-duotone /><span>All</span>
                     </a>
                     <a 
                         @click="activeLang = 'en'"
-                        class="bg-transparent group btn-blue transition-all duration-300 cursor-pointer select-none"
+                        class="group btn-blue cursor-pointer"
                         :class="activeLang === 'en' ? 'op100! text-blue! bg-blue/10' : ''"
                     >
-                        <div :class="activeLang === 'en' ? 'i-ph-translate-duotone' : 'i-ph-translate'" group-hover:i-ph-translate-duotone transition-all duration-200 /><span>EN</span>
+                        <div :class="activeLang === 'en' ? 'i-ph-translate-duotone' : 'i-ph-translate'" group-hover:i-ph-translate-duotone /><span>EN</span>
                     </a>
                     <a 
                         @click="activeLang = 'id'"
-                        class="bg-transparent group btn-red transition-all duration-300 cursor-pointer select-none"
+                        class="group btn-red cursor-pointer"
                         :class="activeLang === 'id' ? 'op100! text-red! bg-red/10' : ''"
                     >
-                        <div :class="activeLang === 'id' ? 'i-ph-translate-duotone' : 'i-ph-translate'" group-hover:i-ph-translate-duotone transition-all duration-200 /><span>ID</span>
+                        <div :class="activeLang === 'id' ? 'i-ph-translate-duotone' : 'i-ph-translate'" group-hover:i-ph-translate-duotone /><span>ID</span>
                     </a>
                     <a 
                         @click="sortBy = sortBy === 'date' ? 'name' : 'date'"
-                        class="bg-transparent group btn-zinc w-22 justify-center transition-all duration-300 cursor-pointer select-none"
+                        class="group btn-zinc w-22 justify-center cursor-pointer"
                     >
                         <div :class="sortBy === 'name' ? 'i-ph-sort-ascending' : 'i-ph-calendar-blank'" /><span>{{ sortBy === 'date' ? 'Recent' : 'A-Z' }}</span>
                     </a>
