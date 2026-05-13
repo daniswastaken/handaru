@@ -8,6 +8,7 @@ import CustomTitleTemplate from "../icons/CustomTitleTemplate.vue";
 import BedrockTweaks from "../icons/BedrockTweaks.vue";
 import Icona from "../icons/Icona.vue";
 import Inperta from "../icons/Inperta.vue";
+import Coda from "../icons/Coda.vue";
 
 defineProps<{ projects: Record<string, any[]> }>();
 
@@ -139,6 +140,11 @@ function slug(name: string) {
                         />
                         <Inperta
                             v-else-if="item.icon === 'Inperta'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <Coda
+                            v-else-if="item.icon === 'Coda'"
                             style="width: 2.25rem; height: 2.25rem;"
                             class="opacity-50"
                         />

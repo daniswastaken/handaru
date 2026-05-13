@@ -39,4 +39,9 @@ projects:
           link: "https://daniswastaken.my.id/periodic/"
           desc: "Interactive periodic table for memorizing 118 elements."
           icon: "Inperta"
+    Configs:
+        - name: "Coda"
+          link: "https://github.com/daniswastaken/coda"
+          desc: "My Hyprland dotfiles."
+          icon: "Coda"
 ---
