@@ -15,7 +15,7 @@
     </defs>
 
     <!-- Background drafting arc -->
-    <path opacity="0.1" d="M12 56C12 56 20 62 32 62C44 62 52 56 52 56" stroke="white" stroke-width="1.5" stroke-dasharray="2 4" />
+    <path opacity="0.1" d="M10 56C10 56 18 62 32 62C46 62 54 56 54 56" stroke="white" stroke-width="1.5" stroke-dasharray="2 4" />
 
     <!-- Top Handle -->
     <rect opacity="0.9" x="30" y="4" width="4" height="8" rx="1" fill="white" />
@@ -30,7 +30,7 @@
     <!-- Right Leg (Arched) -->
     <path opacity="0.6" d="M34 14C34 14 46 36 56 56H50C40 36 32 18 32 14H34Z" fill="url(#leg-grad)" />
     <!-- Pencil Lead Tip -->
-    <path opacity="0.9" d="M56 56L53 51H59L56 56Z" fill="white" />
+    <path opacity="0.9" d="M56 56L54 62L52 56H56Z" fill="white" />
 
     <!-- Adjustment Bar & Thumb Screw -->
     <rect opacity="0.4" x="22" y="38" width="20" height="1.5" fill="white" />
