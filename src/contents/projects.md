@@ -44,4 +44,13 @@ projects:
           link: "https://github.com/daniswastaken/coda"
           desc: "My Hyprland dotfiles."
           icon: "Coda"
+    Fun:
+        - name: "Fateometer"
+          link: "https://daniswastaken.github.io/fateometer/"
+          desc: "Your fate destined by your chosen card."
+          icon: "Fateometer"
+        - name: "Luminary"
+          link: "https://daniswastaken.github.io/luminary/"
+          desc: "Calculate how long it takes light to travel distances."
+          icon: "Luminary"
 ---

@@ -9,6 +9,8 @@ import BedrockTweaks from "../icons/BedrockTweaks.vue";
 import Icona from "../icons/Icona.vue";
 import Inperta from "../icons/Inperta.vue";
 import Coda from "../icons/Coda.vue";
+import Luminary from "../icons/Luminary.vue";
+import Fateometer from "../icons/Fateometer.vue";
 
 defineProps<{ projects: Record<string, any[]> }>();
 
@@ -145,6 +147,16 @@ function slug(name: string) {
                         />
                         <Coda
                             v-else-if="item.icon === 'Coda'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <Luminary
+                            v-else-if="item.icon === 'Luminary'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <Fateometer
+                            v-else-if="item.icon === 'Fateometer'"
                             style="width: 2.25rem; height: 2.25rem;"
                             class="opacity-50"
                         />
