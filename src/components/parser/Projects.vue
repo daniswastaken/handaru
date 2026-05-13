@@ -11,6 +11,7 @@ import Inperta from "../icons/Inperta.vue";
 import Coda from "../icons/Coda.vue";
 import Luminary from "../icons/Luminary.vue";
 import Fateometer from "../icons/Fateometer.vue";
+import Fairy from "../icons/Fairy.vue";
 
 defineProps<{ projects: Record<string, any[]> }>();
 
@@ -147,6 +148,11 @@ function slug(name: string) {
                         />
                         <Coda
                             v-else-if="item.icon === 'Coda'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <Fairy
+                            v-else-if="item.icon === 'Fairy'"
                             style="width: 2.25rem; height: 2.25rem;"
                             class="opacity-50"
                         />

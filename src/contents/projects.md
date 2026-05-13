@@ -44,6 +44,10 @@ projects:
           link: "https://github.com/daniswastaken/coda"
           desc: "My Hyprland dotfiles."
           icon: "Coda"
+        - name: "Fairy"
+          link: "https://github.com/daniswastaken/fairy"
+          desc: "New Eridu's best AI brought to real life."
+          icon: "Fairy"
     Fun:
         - name: "Fateometer"
           link: "https://daniswastaken.github.io/fateometer/"
