@@ -1,4 +1,6 @@
 ---
+import defaultOgImage from '../assets/og.jpg';
+
 export interface Props {
   title: string;
   description?: string;
@@ -10,7 +12,7 @@ export interface Props {
 const {
   title,
   description = "Handaru Daniswara Al Fatih (daniswastaken) - Software Engineer and Researcher. Exploring the intersection of code, research, and minimalist design.",
-  image = "/og-image.png",
+  image = defaultOgImage.src,
   canonicalUrl = Astro.url.href,
   type = "website",
 } = Astro.props;
@@ -55,12 +57,18 @@ const schema = {
 <meta name="keywords" content="handaru, handaru daniswara, handaru daniswara al fatih, danis, danis handaru, daniswastaken, software engineer, researcher" />
 <link rel="canonical" href={canonicalUrl} />
 
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
+<meta itemprop="image" content={ogImage} />
+
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content="Handaru Daniswara" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
