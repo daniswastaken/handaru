@@ -1,5 +1,5 @@
 ---
-title: State of the Art 1B 
+title: State of the Art 1B
 date: 2026-05-11T16:00:00.000+00:00
 lang: en
 duration: 2 min
