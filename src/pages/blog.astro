@@ -11,7 +11,7 @@ const posts = allPosts
     .map((post: CollectionEntry<"posts">) => {
         return {
             title: post.data.title,
-            url: "/blog/" + post.id,
+            url: "/blog/" + post.id + "/",
             date: post.data.date,
             duration: post.data.duration,
             lang: post.data.lang,
