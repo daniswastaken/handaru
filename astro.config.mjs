@@ -4,13 +4,12 @@ import vue from '@astrojs/vue';
 import unocss from 'unocss/astro';
 import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://handaru.dev',
   integrations: [
     vue(),
     unocss(),
-    sitemap(),
+    sitemap({ filenameBase: 'sitemap' }),
   ],
   markdown: {
     shikiConfig: {

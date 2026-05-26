@@ -2,14 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import AboutComponent from '../components/parser/About.vue';
 import { Content, frontmatter } from '../contents/about.md';
+export const prerender = true;
 ---
 
-<Layout title="Handaru Daniswara">
+<Layout title="Handaru Daniswara – Software Engineer, Researcher & Developer">
     <main class="max-w-65ch mx-auto px-6 pt-24 pb-20">
         <AboutComponent 
             mainTitle={frontmatter.mainTitle} 
             backgroundTitle={frontmatter.backgroundTitle} 
-            client:load 
         />
 
         <article class="prose mt-20">
