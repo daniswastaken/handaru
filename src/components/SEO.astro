@@ -9,15 +9,18 @@ export interface Props {
   type?: string;
 }
 
+const siteUrl = Astro.site ? Astro.site.href : 'https://handaru.dev/';
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
+const defaultCanonical = new URL(path, siteUrl).href;
+
 const {
   title,
   description = "Handaru Daniswara Al Fatih (daniswastaken) - Software Engineer and Researcher. Exploring the intersection of code, research, and minimalist design.",
   image = defaultOgImage.src,
-  canonicalUrl = Astro.url.href,
+  canonicalUrl = defaultCanonical,
   type = "website",
 } = Astro.props;
 
-const siteUrl = Astro.site ? Astro.site.href : 'https://handaru.dev/';
 const ogImage = new URL(image, siteUrl).href;
 
 const schema = {
