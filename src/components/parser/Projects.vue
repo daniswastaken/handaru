@@ -12,6 +12,7 @@ import Coda from "../icons/Coda.vue";
 import Luminary from "../icons/Luminary.vue";
 import Fateometer from "../icons/Fateometer.vue";
 import Fairy from "../icons/Fairy.vue";
+import Droplet from "../icons/Droplet.vue";
 
 defineProps<{ projects: Record<string, any[]> }>();
 
@@ -163,6 +164,11 @@ function slug(name: string) {
                         />
                         <Fateometer
                             v-else-if="item.icon === 'Fateometer'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <Droplet
+                            v-else-if="item.icon === 'Droplet'"
                             style="width: 2.25rem; height: 2.25rem;"
                             class="opacity-50"
                         />

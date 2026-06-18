@@ -25,6 +25,10 @@ projects:
           link: "https://github.com/daniswastaken/icona"
           desc: "Open-source icons for writing good Minecraft Marketplace Description."
           icon: "Icona"
+        - name: "Droplet Shader"
+          link: "https://www.curseforge.com/minecraft-bedrock/texture-packs/droplet-shader"
+          desc: "Where realism and fantasy feels met."
+          icon: "Droplet"
     Homelabs:
         - name: "Prefect"
           link: "https://github.com/daniswastaken/prefect"
