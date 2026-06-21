@@ -29,6 +29,10 @@ projects:
           link: "https://www.curseforge.com/minecraft-bedrock/texture-packs/droplet-shader"
           desc: "Where realism and fantasy feels met."
           icon: "Droplet"
+        - name: "Why Not OSS"
+          link: "https://www.curseforge.com/minecraft-bedrock/texture-packs/droplet-shader"
+          desc: "Organization for gathering several of my Minecraft OSS works."
+          icon: "WhyNotOSS"
     Homelabs:
         - name: "Prefect"
           link: "https://github.com/daniswastaken/prefect"
