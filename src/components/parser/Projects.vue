@@ -15,6 +15,7 @@ import Fairy from "../icons/Fairy.vue";
 import Droplet from "../icons/Droplet.vue";
 import WhyNotOSS from "../icons/WhyNotOSS.vue";
 import Miaq from "../icons/Miaq.vue";
+import Dailyearly from "../icons/Dailyearly.vue";
 
 defineProps<{ projects: Record<string, any[]> }>();
 
@@ -181,6 +182,11 @@ function slug(name: string) {
                         />
                         <Miaq
                             v-else-if="item.icon === 'Miaq'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <Dailyearly
+                            v-else-if="item.icon === 'Dailyearly'"
                             style="width: 2.25rem; height: 2.25rem;"
                             class="opacity-50"
                         />
