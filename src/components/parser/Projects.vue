@@ -14,6 +14,7 @@ import Fateometer from "../icons/Fateometer.vue";
 import Fairy from "../icons/Fairy.vue";
 import Droplet from "../icons/Droplet.vue";
 import WhyNotOSS from "../icons/WhyNotOSS.vue";
+import Miaq from "../icons/Miaq.vue";
 
 defineProps<{ projects: Record<string, any[]> }>();
 
@@ -175,6 +176,11 @@ function slug(name: string) {
                         />
                         <WhyNotOSS
                             v-else-if="item.icon === 'WhyNotOSS'"
+                            style="width: 2.25rem; height: 2.25rem;"
+                            class="opacity-50"
+                        />
+                        <Miaq
+                            v-else-if="item.icon === 'Miaq'"
                             style="width: 2.25rem; height: 2.25rem;"
                             class="opacity-50"
                         />

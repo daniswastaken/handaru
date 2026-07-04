@@ -56,7 +56,11 @@ projects:
           link: "https://github.com/daniswastaken/fairy"
           desc: "New Eridu's best AI brought to real life."
           icon: "Fairy"
-    Fun:
+    Tools:
+        - name: "Make it a Quote"
+          link: "https://daniswastaken.github.io/miaq/"
+          desc: "WhatsApp Bot that turns your messages into epic quotes."
+          icon: "Miaq"
         - name: "Fateometer"
           link: "https://daniswastaken.github.io/fateometer/"
           desc: "Your fate destined by your chosen card."
