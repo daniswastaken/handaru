@@ -44,7 +44,7 @@ projects:
           desc: "OSS gamified stoichiometry and nomenclature."
           icon: "InfiniteChemistry"
         - name: "Inperta"
-          link: "https://daniswastaken.my.id/periodic/"
+          link: "https://daniswastaken.github.io/my/periodic/"
           desc: "Interactive periodic table for memorizing 118 elements."
           icon: "Inperta"
     Configs:
