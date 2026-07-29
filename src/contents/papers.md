@@ -22,4 +22,8 @@ papers:
           desc: "Research about benefits, effects, causes, and ways to prevent stress."
           date: "Jul 20, 2024"
           lang: "id"
+    Journal:
+        - name: "Penyakit Sosial"
+          link: "/papers/penyakit-sosial.pdf"
+          desc: "In-depth review regarding 'Social Ills' in Islamic perspective."
 ---
