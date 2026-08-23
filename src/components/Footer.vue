@@ -12,7 +12,7 @@ const currentYear = new Date().getFullYear();
       </div>
       <div class="opacity-75 flex items-center gap-2">
         <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors no-underline text-[#8b8b8b]">CC BY-NC-SA 4.0</a>
-        <span>0000-{{ currentYear }} © Handaru</span>
+        <span>0000-{{ currentYear }} © Handaru Daniswara</span>
       </div>
     </div>
   </footer>
